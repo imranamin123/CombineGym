@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CombineGymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BloodGroup">
+    <Key>
+      <PropertyRef Name="BloodGroupId" />
+    </Key>
+    <Property Name="BloodGroupId" Type="smallint" Nullable="false" />
+    <Property Name="BloodGroupName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchId" />
+    </Key>
+    <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="100" />
+    <Property Name="Phone1" Type="varchar" MaxLength="50" />
+    <Property Name="Phone2" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="GenderId" Type="smallint" />
+    <Property Name="FatherName" Type="varchar" MaxLength="100" />
+    <Property Name="DateOfJoining" Type="date" />
+    <Property Name="DateOfLeaving" Type="date" />
+    <Property Name="Salary" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Phone1" Type="varchar" MaxLength="50" />
+    <Property Name="Phone2" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="StatusId" Type="smallint" />
+    <Property Name="BranchId" Type="int" />
+    <Property Name="GymShiftId" Type="int" />
+    <Property Name="Picture" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="EmployeeAttendance">
+    <Key>
+      <PropertyRef Name="EmployeeAttendanceId" />
+    </Key>
+    <Property Name="EmployeeAttendanceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" />
+    <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="TimeIn" Type="datetime" />
+    <Property Name="TimeOut" Type="datetime" />
+    <Property Name="BranchId" Type="int" />
+  </EntityType>
+  <EntityType Name="FeeMonth">
+    <Key>
+      <PropertyRef Name="FeeMonthId" />
+    </Key>
+    <Property Name="FeeMonthId" Type="smallint" Nullable="false" />
+    <Property Name="FeeMonth" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FeeReceipt">
+    <Key>
+      <PropertyRef Name="FeeReceiptId" />
+    </Key>
+    <Property Name="FeeReceiptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReferenceNo" Type="varchar" MaxLength="50" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="FeeYear" Type="smallint" />
+    <Property Name="FeeMonth" Type="smallint" />
+    <Property Name="PreviousBalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReceiptAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BalanceAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="BranchId" Type="int" />
+  </EntityType>
+  <EntityType Name="FeeYear">
+    <Key>
+      <PropertyRef Name="FeeYearId" />
+    </Key>
+    <Property Name="FeeYearId" Type="smallint" Nullable="false" />
+    <Property Name="FeeYear" Type="smallint" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="smallint" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GymShift">
+    <Key>
+      <PropertyRef Name="GymShiftId" />
+    </Key>
+    <Property Name="GymShiftId" Type="smallint" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="Timing" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="secMenu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="secPage">
+    <Key>
+      <PropertyRef Name="PageId" />
+    </Key>
+    <Property Name="PageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuId" Type="int" />
+    <Property Name="PageNo" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="secUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeId" Type="int" />
+    <Property Name="StatusId" Type="smallint" />
+    <Property Name="BranchId" Type="int" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="secUserRights">
+    <Key>
+      <PropertyRef Name="UserRightsId" />
+    </Key>
+    <Property Name="UserRightsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="MenuId" Type="int" />
+    <Property Name="PageNo" Type="int" />
+    <Property Name="IsView" Type="bit" />
+    <Property Name="IsAdd" Type="bit" />
+    <Property Name="IsEdit" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="smallint" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="FaherName" Type="varchar" MaxLength="200" />
+    <Property Name="GenderId" Type="smallint" />
+    <Property Name="AdmissionDate" Type="date" />
+    <Property Name="FeeDueDate" Type="date" />
+    <Property Name="FeeAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Phone1" Type="varchar" MaxLength="50" />
+    <Property Name="Phone2" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+    <Property Name="BloodGroupId" Type="smallint" />
+    <Property Name="Picture" Type="varchar" MaxLength="100" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="StatusId" Type="smallint" />
+    <Property Name="GymShiftId" Type="smallint" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="BranchId" Type="int" />
+  </EntityType>
+  <EntityType Name="StudentAttendance">
+    <Key>
+      <PropertyRef Name="StudentAttendanceId" />
+    </Key>
+    <Property Name="StudentAttendanceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="TimeIn" Type="datetime" />
+    <Property Name="TimeOut" Type="datetime" />
+    <Property Name="TimeSpend" Type="int" />
+    <Property Name="BranchId" Type="int" />
+  </EntityType>
+  <Function Name="spEmployeeAttendanceList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchId" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spEmployeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="BranchId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spFeeReceiptHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchId" Type="int" Mode="In" />
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spFeeReceiptHistorySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchId" Type="int" Mode="In" />
+    <Parameter Name="StudentId" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spGetStdentPrevBal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchId" Type="int" Mode="In" />
+    <Parameter Name="studentId" Type="int" Mode="In" />
+    <Parameter Name="feeMonth" Type="int" Mode="In" />
+    <Parameter Name="feeYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spStudentAttendanceListByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchId" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spStudentList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="branchId" Type="int" Mode="In" />
+    <Parameter Name="studentId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="smallint" Mode="In" />
+    <Parameter Name="gender" Type="smallint" Mode="In" />
+    <Parameter Name="shift" Type="smallint" Mode="In" />
+  </Function>
+  <Function Name="spUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="BranchId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="CombineGymModelStoreContainer">
+    <EntitySet Name="BloodGroup" EntityType="Self.BloodGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAttendance" EntityType="Self.EmployeeAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeMonth" EntityType="Self.FeeMonth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeReceipt" EntityType="Self.FeeReceipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeYear" EntityType="Self.FeeYear" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GymShift" EntityType="Self.GymShift" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="secMenu" EntityType="Self.secMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="secPage" EntityType="Self.secPage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="secUser" EntityType="Self.secUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="secUserRights" EntityType="Self.secUserRights" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentAttendance" EntityType="Self.StudentAttendance" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

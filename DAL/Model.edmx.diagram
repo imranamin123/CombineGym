@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86b7596330ef400097f4713b36a8e52d" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="CombineGymModel.Branch" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CombineGymModel.Gender" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CombineGymModel.secUser" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CombineGymModel.Status" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CombineGymModel.GymShift" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="CombineGymModel.BloodGroup" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="CombineGymModel.Employee" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CombineGymModel.Student" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="CombineGymModel.FeeMonth" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="CombineGymModel.FeeYear" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="CombineGymModel.FeeReceipt" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="CombineGymModel.StudentAttendance" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="CombineGymModel.EmployeeAttendance" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CombineGymModel.secMenu" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CombineGymModel.secPage" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="CombineGymModel.secUserRight" Width="1.5" PointX="2.75" PointY="11.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

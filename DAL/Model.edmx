@@ -1,0 +1,960 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CombineGymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BloodGroup">
+          <Key>
+            <PropertyRef Name="BloodGroupId" />
+          </Key>
+          <Property Name="BloodGroupId" Type="smallint" Nullable="false" />
+          <Property Name="BloodGroupName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="100" />
+          <Property Name="Phone1" Type="varchar" MaxLength="50" />
+          <Property Name="Phone2" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="GenderId" Type="smallint" />
+          <Property Name="FatherName" Type="varchar" MaxLength="100" />
+          <Property Name="DateOfJoining" Type="date" />
+          <Property Name="DateOfLeaving" Type="date" />
+          <Property Name="Salary" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Phone1" Type="varchar" MaxLength="50" />
+          <Property Name="Phone2" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="StatusId" Type="smallint" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="GymShiftId" Type="int" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EmployeeAttendance">
+          <Key>
+            <PropertyRef Name="EmployeeAttendanceId" />
+          </Key>
+          <Property Name="EmployeeAttendanceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="AttendanceDate" Type="datetime" />
+          <Property Name="TimeIn" Type="datetime" />
+          <Property Name="TimeOut" Type="datetime" />
+          <Property Name="BranchId" Type="int" />
+        </EntityType>
+        <EntityType Name="FeeMonth">
+          <Key>
+            <PropertyRef Name="FeeMonthId" />
+          </Key>
+          <Property Name="FeeMonthId" Type="smallint" Nullable="false" />
+          <Property Name="FeeMonth" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FeeReceipt">
+          <Key>
+            <PropertyRef Name="FeeReceiptId" />
+          </Key>
+          <Property Name="FeeReceiptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferenceNo" Type="varchar" MaxLength="50" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="ReceiptDate" Type="datetime" />
+          <Property Name="FeeYear" Type="smallint" />
+          <Property Name="FeeMonth" Type="smallint" />
+          <Property Name="PreviousBalance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ReceiptAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BalanceAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="BranchId" Type="int" />
+        </EntityType>
+        <EntityType Name="FeeYear">
+          <Key>
+            <PropertyRef Name="FeeYearId" />
+          </Key>
+          <Property Name="FeeYearId" Type="smallint" Nullable="false" />
+          <Property Name="FeeYear" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="smallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GymShift">
+          <Key>
+            <PropertyRef Name="GymShiftId" />
+          </Key>
+          <Property Name="GymShiftId" Type="smallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Timing" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="secMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="secPage">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="PageNo" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="secUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="StatusId" Type="smallint" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="secUserRights">
+          <Key>
+            <PropertyRef Name="UserRightsId" />
+          </Key>
+          <Property Name="UserRightsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="PageNo" Type="int" />
+          <Property Name="IsView" Type="bit" />
+          <Property Name="IsAdd" Type="bit" />
+          <Property Name="IsEdit" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="smallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="FaherName" Type="varchar" MaxLength="200" />
+          <Property Name="GenderId" Type="smallint" />
+          <Property Name="AdmissionDate" Type="date" />
+          <Property Name="FeeDueDate" Type="date" />
+          <Property Name="FeeAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Phone1" Type="varchar" MaxLength="50" />
+          <Property Name="Phone2" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="BloodGroupId" Type="smallint" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="StatusId" Type="smallint" />
+          <Property Name="GymShiftId" Type="smallint" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="BranchId" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentAttendance">
+          <Key>
+            <PropertyRef Name="StudentAttendanceId" />
+          </Key>
+          <Property Name="StudentAttendanceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="AttendanceDate" Type="datetime" />
+          <Property Name="TimeIn" Type="datetime" />
+          <Property Name="TimeOut" Type="datetime" />
+          <Property Name="TimeSpend" Type="int" />
+          <Property Name="BranchId" Type="int" />
+        </EntityType>
+        <Function Name="spEmployeeAttendanceList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchId" Type="int" Mode="In" />
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+          <Parameter Name="ToDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spEmployeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="BranchId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spFeeReceiptHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchId" Type="int" Mode="In" />
+          <Parameter Name="StudentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spFeeReceiptHistorySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchId" Type="int" Mode="In" />
+          <Parameter Name="StudentId" Type="int" Mode="In" />
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+          <Parameter Name="ToDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spGetStdentPrevBal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="branchId" Type="int" Mode="In" />
+          <Parameter Name="studentId" Type="int" Mode="In" />
+          <Parameter Name="feeMonth" Type="int" Mode="In" />
+          <Parameter Name="feeYear" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spStudentAttendanceListByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchId" Type="int" Mode="In" />
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+          <Parameter Name="ToDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spStudentList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="branchId" Type="int" Mode="In" />
+          <Parameter Name="studentId" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="smallint" Mode="In" />
+          <Parameter Name="gender" Type="smallint" Mode="In" />
+          <Parameter Name="shift" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="spUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="BranchId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CombineGymModelStoreContainer">
+          <EntitySet Name="BloodGroup" EntityType="Self.BloodGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeAttendance" EntityType="Self.EmployeeAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeeMonth" EntityType="Self.FeeMonth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeeReceipt" EntityType="Self.FeeReceipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeeYear" EntityType="Self.FeeYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GymShift" EntityType="Self.GymShift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secMenu" EntityType="Self.secMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secPage" EntityType="Self.secPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secUser" EntityType="Self.secUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secUserRights" EntityType="Self.secUserRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAttendance" EntityType="Self.StudentAttendance" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CombineGymModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="secUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="StatusId" Type="Int16" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CombineGymEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="secUsers" EntityType="Self.secUser" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="GymShifts" EntityType="CombineGymModel.GymShift" />
+          <EntitySet Name="BloodGroups" EntityType="CombineGymModel.BloodGroup" />
+          <EntitySet Name="Employees" EntityType="CombineGymModel.Employee" />
+          <EntitySet Name="Students" EntityType="CombineGymModel.Student" />
+          <FunctionImport Name="spEmployeeList" ReturnType="Collection(CombineGymModel.spEmployeeList_Result)">
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="BranchId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spStudentList" ReturnType="Collection(CombineGymModel.spStudentList_Result)">
+            <Parameter Name="branchId" Mode="In" Type="Int32" />
+            <Parameter Name="studentId" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int16" />
+            <Parameter Name="gender" Mode="In" Type="Int16" />
+            <Parameter Name="shift" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <EntitySet Name="FeeMonths" EntityType="CombineGymModel.FeeMonth" />
+          <EntitySet Name="FeeYears" EntityType="CombineGymModel.FeeYear" />
+          <EntitySet Name="FeeReceipts" EntityType="CombineGymModel.FeeReceipt" />
+          <FunctionImport Name="spFeeReceiptHistorySearch" ReturnType="Collection(CombineGymModel.spFeeReceiptHistorySearch_Result)">
+            <Parameter Name="BranchId" Mode="In" Type="Int32" />
+            <Parameter Name="StudentId" Mode="In" Type="Int32" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="StudentAttendances" EntityType="CombineGymModel.StudentAttendance" />
+          <FunctionImport Name="spGetStdentPrevBal" ReturnType="Collection(Decimal)">
+            <Parameter Name="branchId" Mode="In" Type="Int32" />
+            <Parameter Name="studentId" Mode="In" Type="Int32" />
+            <Parameter Name="feeMonth" Mode="In" Type="Int32" />
+            <Parameter Name="feeYear" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFeeReceiptHistory" ReturnType="Collection(CombineGymModel.spFeeReceiptHistory_Result)">
+            <Parameter Name="BranchId" Mode="In" Type="Int32" />
+            <Parameter Name="StudentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spStudentAttendanceListByDate" ReturnType="Collection(CombineGymModel.spStudentAttendanceListByDate_Result)">
+            <Parameter Name="BranchId" Mode="In" Type="Int32" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spEmployeeAttendanceList" ReturnType="Collection(CombineGymModel.spEmployeeAttendanceList_Result)">
+            <Parameter Name="BranchId" Mode="In" Type="Int32" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="EmployeeAttendances" EntityType="CombineGymModel.EmployeeAttendance" />
+          <FunctionImport Name="spUserList" ReturnType="Collection(CombineGymModel.spUserList_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="BranchId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="secMenus" EntityType="CombineGymModel.secMenu" />
+          <EntitySet Name="secPages" EntityType="CombineGymModel.secPage" />
+          <EntitySet Name="secUserRights" EntityType="CombineGymModel.secUserRight" />
+          </EntityContainer>
+        <EntityType Name="GymShift">
+          <Key>
+            <PropertyRef Name="GymShiftId" />
+          </Key>
+          <Property Name="GymShiftId" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Timing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BloodGroup">
+          <Key>
+            <PropertyRef Name="BloodGroupId" />
+          </Key>
+          <Property Name="BloodGroupId" Type="Int16" Nullable="false" />
+          <Property Name="BloodGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GenderId" Type="Int16" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfJoining" Type="DateTime" Precision="0" />
+          <Property Name="DateOfLeaving" Type="DateTime" Precision="0" />
+          <Property Name="Salary" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StatusId" Type="Int16" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="GymShiftId" Type="Int32" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FaherName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GenderId" Type="Int16" />
+          <Property Name="AdmissionDate" Type="DateTime" Precision="0" />
+          <Property Name="FeeDueDate" Type="DateTime" Precision="0" />
+          <Property Name="FeeAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroupId" Type="Int16" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StatusId" Type="Int16" />
+          <Property Name="GymShiftId" Type="Int16" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="BranchId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="spEmployeeList_Result">
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="Int16" Name="GenderId" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FatherName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="DateOfJoining" Nullable="true" />
+          <Property Type="DateTime" Name="DateOfLeaving" Nullable="true" />
+          <Property Type="Decimal" Name="Salary" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Phone1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="200" />
+          <Property Type="Int16" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BranchId" Nullable="true" />
+          <Property Type="String" Name="BranchName" Nullable="true" MaxLength="100" />
+          <Property Type="Int16" Name="gymShiftId" Nullable="false" />
+          <Property Type="String" Name="ShiftDescription" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShiftTiming" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spStudentList_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="FaherName" Nullable="true" MaxLength="200" />
+          <Property Type="Int16" Name="GenderId" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="AdmissionDate" Nullable="true" />
+          <Property Type="DateTime" Name="FeeDueDate" Nullable="true" />
+          <Property Type="Decimal" Name="FeeAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Phone1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="Int16" Name="BloodGroupId" Nullable="true" />
+          <Property Type="Int16" Name="BloodGroup" Nullable="true" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="500" />
+          <Property Type="Int16" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="GymShiftId" Nullable="true" />
+          <Property Type="String" Name="Shift" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShiftTimings" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="BranchId" Nullable="true" />
+          <Property Type="String" Name="BranchName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="FeeMonth">
+          <Key>
+            <PropertyRef Name="FeeMonthId" />
+          </Key>
+          <Property Name="FeeMonthId" Type="Int16" Nullable="false" />
+          <Property Name="FeeMonth1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FeeYear">
+          <Key>
+            <PropertyRef Name="FeeYearId" />
+          </Key>
+          <Property Name="FeeYearId" Type="Int16" Nullable="false" />
+          <Property Name="FeeYear1" Type="Int16" />
+        </EntityType>
+        <EntityType Name="FeeReceipt">
+          <Key>
+            <PropertyRef Name="FeeReceiptId" />
+          </Key>
+          <Property Name="FeeReceiptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+          <Property Name="FeeYear" Type="Int16" />
+          <Property Name="FeeMonth" Type="Int16" />
+          <Property Name="PreviousBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ReceiptAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BalanceAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="BranchId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="spFeeReceiptHistorySearch_Result">
+          <Property Type="Int32" Name="FeeReceiptId" Nullable="false" />
+          <Property Type="Int32" Name="BranchId" Nullable="true" />
+          <Property Type="Int32" Name="StudentId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="Int16" Name="FeeYear" Nullable="true" />
+          <Property Type="Int16" Name="FeeMonth" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="StudentAttendance">
+          <Key>
+            <PropertyRef Name="StudentAttendanceId" />
+          </Key>
+          <Property Name="StudentAttendanceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+          <Property Name="TimeIn" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="3" />
+          <Property Name="TimeSpend" Type="Int32" />
+          <Property Name="BranchId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="spFeeReceiptHistory_Result">
+          <Property Type="Int32" Name="FeeReceiptId" Nullable="false" />
+          <Property Type="Int32" Name="BranchId" Nullable="true" />
+          <Property Type="Int32" Name="StudentId" Nullable="true" />
+          <Property Type="Int16" Name="FeeYear" Nullable="true" />
+          <Property Type="Int16" Name="FeeMonth" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="PreviousBalance" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ReceiptAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BalanceAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="IsPending" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spStudentAttendanceListByDate_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="AttendanceDate" Nullable="true" />
+          <Property Type="DateTime" Name="TimeIn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="TimeOut" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="TimeSpend" Nullable="true" />
+          <Property Type="DateTime" Name="FeeDueDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsPending" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spEmployeeAttendanceList_Result">
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="AttendanceDate" Nullable="true" />
+          <Property Type="DateTime" Name="TimeIn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="TimeOut" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="TimeSpend" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="EmployeeAttendance">
+          <Key>
+            <PropertyRef Name="EmployeeAttendanceId" />
+          </Key>
+          <Property Name="EmployeeAttendanceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+          <Property Name="TimeIn" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="3" />
+          <Property Name="BranchId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="spUserList_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BranchId" Nullable="true" />
+          <Property Type="String" Name="BranchName" Nullable="true" MaxLength="100" />
+          <Property Type="Int16" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="secMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="secPage">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="PageNo" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="secUserRight">
+          <Key>
+            <PropertyRef Name="UserRightsId" />
+          </Key>
+          <Property Name="UserRightsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="PageNo" Type="Int32" />
+          <Property Name="IsView" Type="Boolean" />
+          <Property Name="IsAdd" Type="Boolean" />
+          <Property Name="IsEdit" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CombineGymModelStoreContainer" CdmEntityContainer="CombineGymEntities">
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="CombineGymModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="CombineGymModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secUsers">
+            <EntityTypeMapping TypeName="CombineGymModel.secUser">
+              <MappingFragment StoreEntitySet="secUser">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="CombineGymModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GymShifts">
+            <EntityTypeMapping TypeName="CombineGymModel.GymShift">
+              <MappingFragment StoreEntitySet="GymShift">
+                <ScalarProperty Name="Timing" ColumnName="Timing" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GymShiftId" ColumnName="GymShiftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BloodGroups">
+            <EntityTypeMapping TypeName="CombineGymModel.BloodGroup">
+              <MappingFragment StoreEntitySet="BloodGroup">
+                <ScalarProperty Name="BloodGroupName" ColumnName="BloodGroupName" />
+                <ScalarProperty Name="BloodGroupId" ColumnName="BloodGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CombineGymModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="GymShiftId" ColumnName="GymShiftId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="DateOfLeaving" ColumnName="DateOfLeaving" />
+                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="CombineGymModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="GymShiftId" ColumnName="GymShiftId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="BloodGroupId" ColumnName="BloodGroupId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="FeeAmount" ColumnName="FeeAmount" />
+                <ScalarProperty Name="FeeDueDate" ColumnName="FeeDueDate" />
+                <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="FaherName" ColumnName="FaherName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spEmployeeList" FunctionName="CombineGymModel.Store.spEmployeeList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CombineGymModel.spEmployeeList_Result">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+                <ScalarProperty Name="DateOfLeaving" ColumnName="DateOfLeaving" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="gymShiftId" ColumnName="gymShiftId" />
+                <ScalarProperty Name="ShiftDescription" ColumnName="ShiftDescription" />
+                <ScalarProperty Name="ShiftTiming" ColumnName="ShiftTiming" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spStudentList" FunctionName="CombineGymModel.Store.spStudentList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CombineGymModel.spStudentList_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FaherName" ColumnName="FaherName" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+                <ScalarProperty Name="FeeDueDate" ColumnName="FeeDueDate" />
+                <ScalarProperty Name="FeeAmount" ColumnName="FeeAmount" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BloodGroupId" ColumnName="BloodGroupId" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="GymShiftId" ColumnName="GymShiftId" />
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+                <ScalarProperty Name="ShiftTimings" ColumnName="ShiftTimings" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="FeeMonths">
+            <EntityTypeMapping TypeName="CombineGymModel.FeeMonth">
+              <MappingFragment StoreEntitySet="FeeMonth">
+                <ScalarProperty Name="FeeMonth1" ColumnName="FeeMonth" />
+                <ScalarProperty Name="FeeMonthId" ColumnName="FeeMonthId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeeYears">
+            <EntityTypeMapping TypeName="CombineGymModel.FeeYear">
+              <MappingFragment StoreEntitySet="FeeYear">
+                <ScalarProperty Name="FeeYear1" ColumnName="FeeYear" />
+                <ScalarProperty Name="FeeYearId" ColumnName="FeeYearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeeReceipts">
+            <EntityTypeMapping TypeName="CombineGymModel.FeeReceipt">
+              <MappingFragment StoreEntitySet="FeeReceipt">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
+                <ScalarProperty Name="PreviousBalance" ColumnName="PreviousBalance" />
+                <ScalarProperty Name="FeeMonth" ColumnName="FeeMonth" />
+                <ScalarProperty Name="FeeYear" ColumnName="FeeYear" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+                <ScalarProperty Name="FeeReceiptId" ColumnName="FeeReceiptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spFeeReceiptHistorySearch" FunctionName="CombineGymModel.Store.spFeeReceiptHistorySearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CombineGymModel.spFeeReceiptHistorySearch_Result">
+                <ScalarProperty Name="FeeReceiptId" ColumnName="FeeReceiptId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FeeYear" ColumnName="FeeYear" />
+                <ScalarProperty Name="FeeMonth" ColumnName="FeeMonth" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="StudentAttendances">
+            <EntityTypeMapping TypeName="CombineGymModel.StudentAttendance">
+              <MappingFragment StoreEntitySet="StudentAttendance">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="TimeSpend" ColumnName="TimeSpend" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentAttendanceId" ColumnName="StudentAttendanceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spGetStdentPrevBal" FunctionName="CombineGymModel.Store.spGetStdentPrevBal" />
+          <FunctionImportMapping FunctionImportName="spFeeReceiptHistory" FunctionName="CombineGymModel.Store.spFeeReceiptHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CombineGymModel.spFeeReceiptHistory_Result">
+                <ScalarProperty Name="FeeReceiptId" ColumnName="FeeReceiptId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="FeeYear" ColumnName="FeeYear" />
+                <ScalarProperty Name="FeeMonth" ColumnName="FeeMonth" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="PreviousBalance" ColumnName="PreviousBalance" />
+                <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="IsPending" ColumnName="IsPending" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spStudentAttendanceListByDate" FunctionName="CombineGymModel.Store.spStudentAttendanceListByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CombineGymModel.spStudentAttendanceListByDate_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="TimeSpend" ColumnName="TimeSpend" />
+                <ScalarProperty Name="FeeDueDate" ColumnName="FeeDueDate" />
+                <ScalarProperty Name="IsPending" ColumnName="IsPending" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spEmployeeAttendanceList" FunctionName="CombineGymModel.Store.spEmployeeAttendanceList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CombineGymModel.spEmployeeAttendanceList_Result">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="TimeSpend" ColumnName="TimeSpend" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="EmployeeAttendances">
+            <EntityTypeMapping TypeName="CombineGymModel.EmployeeAttendance">
+              <MappingFragment StoreEntitySet="EmployeeAttendance">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeAttendanceId" ColumnName="EmployeeAttendanceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spUserList" FunctionName="CombineGymModel.Store.spUserList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CombineGymModel.spUserList_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="secMenus">
+            <EntityTypeMapping TypeName="CombineGymModel.secMenu">
+              <MappingFragment StoreEntitySet="secMenu">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secPages">
+            <EntityTypeMapping TypeName="CombineGymModel.secPage">
+              <MappingFragment StoreEntitySet="secPage">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PageNo" ColumnName="PageNo" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secUserRights">
+            <EntityTypeMapping TypeName="CombineGymModel.secUserRight">
+              <MappingFragment StoreEntitySet="secUserRights">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+                <ScalarProperty Name="IsAdd" ColumnName="IsAdd" />
+                <ScalarProperty Name="IsView" ColumnName="IsView" />
+                <ScalarProperty Name="PageNo" ColumnName="PageNo" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserRightsId" ColumnName="UserRightsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
